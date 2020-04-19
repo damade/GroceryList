@@ -23,6 +23,11 @@
     <string name="nav_header_phonenumber">+2348185078986</string>
     <string name="quantity">QUANTITY</string>
 
+    <string name="profile_name">Name: </string>
+    <string name="profile_email">Email: </string>
+    <string name="profile_phonenumber">Phonenumber: </string>
+
+
     <string name="nav_header_desc">Navigation header</string>
     <string name="nav_menu_notes">GROCERIES</string>
     <string name="nav_menu_courses">Courses</string>

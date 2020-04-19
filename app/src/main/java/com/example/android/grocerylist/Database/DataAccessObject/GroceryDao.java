@@ -23,7 +23,7 @@ public interface GroceryDao {
     @Delete
     void delete(Grocery grocery);
 
-    @Query("SELECT * FROM grocery_table ORDER BY grocery_title DESC")
+    @Query("SELECT * FROM grocery_table ORDER BY grocery_title")
     LiveData<List<Grocery>> getAllGroceries();
 
     /*@Query("SELECT * FROM note_table ORDER BY time_stamp")

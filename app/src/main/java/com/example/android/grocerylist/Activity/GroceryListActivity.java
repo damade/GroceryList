@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.grocerylist.Adapter.GroceryRecylerAdapter;
@@ -34,13 +36,22 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
     public static final int EDIT_NOTE_REQUEST = 2;
     private GroceryViewModel groceryViewModel;
     //private List<Grocery> notesList = new ArrayList<>();
+    public static final String ORIGINAL_CONTACT_NAME = "com.example.android.notekeeper.ORIGINAL_CONTACT_NAME";
+    public static final String ORIGINAL_CONTACT_EMAIL = "com.example.android.notekeeper.ORIGINAL_CONTACT_EMAIL";
+    public static final String ORIGINAL_CONTACT_PHONENUMBER = "com.example.android.notekeeper.ORIGINAL_CONTACT_PHONENUMBER";
 
+    private TextView profileName;
+    private TextView profileEmail;
+    private TextView profilePhoneNumber;
+    private TextView textNameNavBar;
+    private TextView textEmailNavBar;
+    private TextView textPhoneNumberNavBar;
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        System.exit(0);
-        finish();
+        //System.exit(0);
+        //finish();
     }
 
     @Override
@@ -49,6 +60,15 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
         setContentView(R.layout.activity_grocery_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        profileName = findViewById(R.id.text_name);
+        profileEmail = findViewById(R.id.text_email);
+        profilePhoneNumber = findViewById(R.id.text_phone_number);
+
+        Intent intent = getIntent();
+        profileName.setText(intent.getStringExtra(ORIGINAL_CONTACT_NAME));
+        profileEmail.setText(intent.getStringExtra(ORIGINAL_CONTACT_EMAIL));
+        profilePhoneNumber.setText(intent.getStringExtra(ORIGINAL_CONTACT_PHONENUMBER));
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -67,14 +87,28 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
             }
         });
 
-
+//        Grocery currentGrocery;
+//        for(int i = 1; i <= currentGrocery) grocery in currentGrocery{
+//
+//        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View myNavView = navigationView.getHeaderView(0);
+        textNameNavBar = myNavView.findViewById(R.id.nav_name);
+        textEmailNavBar = myNavView.findViewById(R.id.nav_email);
+        textPhoneNumberNavBar = myNavView.findViewById(R.id.nav_phone_number);
+
+        textNameNavBar.setText(intent.getStringExtra(ORIGINAL_CONTACT_NAME));
+        textEmailNavBar.setText(intent.getStringExtra(ORIGINAL_CONTACT_EMAIL));
+        textPhoneNumberNavBar.setText(intent.getStringExtra(ORIGINAL_CONTACT_PHONENUMBER));
+
+
         navigationView.setNavigationItemSelectedListener(this);
         selectNavigationMenuItem(R.id.nav_notes);
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
@@ -89,52 +123,9 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
                 Toast.makeText(GroceryListActivity.this, "Grocery deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
-        //initializeDisplayContent();
-        groceryRecylerAdapter.setOnItemClickListener(new GroceryRecylerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Grocery grocery) {
-                Intent intent = new Intent(GroceryListActivity.this, GroceryActivity.class);
-                intent.putExtra(GroceryActivity.ORIGINAL_NOTE_ID, grocery.getNid());
-                intent.putExtra(GroceryActivity.ORIGINAL_NOTE_TIME, grocery.getGrocery_Quantity());
-                intent.putExtra(GroceryActivity.ORIGINAL_NOTE_TITLE, grocery.getGrocery_Title());
-                intent.putExtra(GroceryActivity.ORIGINAL_NOTE_TEXT, grocery.getGrocery_Price());
-                startActivityForResult(intent, EDIT_NOTE_REQUEST);
-            }
-        });
     }
 
 
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK) {
-            String title = data.getStringExtra(GroceryActivity.ORIGINAL_NOTE_TITLE);
-            String text = data.getStringExtra(GroceryActivity.ORIGINAL_NOTE_TEXT);
-            String time = data.getStringExtra(GroceryActivity.ORIGINAL_NOTE_TIME);
-
-            Grocery grocery = new Grocery(title, text, time);
-            groceryViewModel.insert(grocery);
-            Toast.makeText(this, "Grocery Saved", Toast.LENGTH_SHORT).show();
-        } else if (requestCode == EDIT_NOTE_REQUEST && resultCode == RESULT_OK) {
-            int id = data.getIntExtra(GroceryActivity.ORIGINAL_NOTE_ID, -1);
-
-            if (id == -1) {
-                Toast.makeText(this, "Grocery can't be updated", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            String title = data.getStringExtra(GroceryActivity.ORIGINAL_NOTE_TITLE);
-            String text = data.getStringExtra(GroceryActivity.ORIGINAL_NOTE_TEXT);
-            String time = data.getStringExtra(GroceryActivity.ORIGINAL_NOTE_TIME);
-
-            Grocery grocery = new Grocery(title, text, time);
-            grocery.setNid(id);
-            groceryViewModel.update(grocery);
-            Toast.makeText(this, "Grocery Updated", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Grocery not saved", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -162,7 +153,7 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
         }
     }
 
-    @Override
+    /*@Override
     protected void onResume() {
         super.onResume();
         final GroceryRecylerAdapter groceryRecylerAdapter = new GroceryRecylerAdapter();
@@ -173,44 +164,6 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
                 groceryRecylerAdapter.submitList(groceries);
             }
         });
-    }
-//        madapterNotes.notifyDataSetChanged();
-//        loadNotes();
-//        //mNoteRecylerAdapter.notifyDataSetChanged();
-
-
-
-    /*private void loadNotes() {
-        SQLiteDatabase db = mDbOpenHelper.getReadableDatabase();
-        final String[] notesColumns = {
-                NoteKeeperDatabaseContract.NoteInfoEntry.COLUMN_NOTE_TITLE,
-                NoteKeeperDatabaseContract.NoteInfoEntry._ID};
-        String noteOrderBy = NoteKeeperDatabaseContract.NoteInfoEntry.COLUMN_NOTE_TITLE;
-        final Cursor noteQuery =
-                db.query(NoteKeeperDatabaseContract.NoteInfoEntry.TABLE_NAME, notesColumns,
-                        null, null, null, null, noteOrderBy);
-        mNoteRecylerAdapter.changeCursor(noteQuery);
-    }
-
-    private void initializeDisplayContent() {
-        //DataManager.loadFromDatabase(mDbOpenHelper);
-        notesList.addAll(mDbOpenHelper.getAllGroceries());
-
-        mNoteRecylerAdapter = new GroceryRecylerAdapter(this, notesList);
-        mNotesLayoutManager = new LinearLayoutManager(this);
-
-        //List<NoteInfo> notes = DataManager.getInstance().getNotes();
-
-
-
-        displayNotes();
-    }
-
-    private void displayNotes() {
-        mRecyclerItems.setLayoutManager(mNotesLayoutManager);
-        mRecyclerItems.setAdapter(mNoteRecylerAdapter);
-
-
     }*/
 
     private void selectNavigationMenuItem(int id) {
@@ -229,7 +182,6 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
         }
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -237,7 +189,7 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
         int id = item.getItemId();
 
         if (id == R.id.nav_notes) {
-            //displayNotes();
+            onBackPressed();
         }
         else if (id == R.id.nav_share) {
 
@@ -249,4 +201,5 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

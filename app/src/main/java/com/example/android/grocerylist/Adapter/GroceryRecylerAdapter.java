@@ -84,7 +84,7 @@ public class GroceryRecylerAdapter extends ListAdapter<Grocery, GroceryRecylerAd
             mTextTitle = itemView.findViewById(R.id.text_title);
             mGroceryPrice = itemView.findViewById(R.id.text_price);
             mGroceryQuantity = itemView.findViewById(R.id.text_each_quantity);
-            itemView.setOnClickListener(new View.OnClickListener() {
+            /*itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
@@ -92,7 +92,7 @@ public class GroceryRecylerAdapter extends ListAdapter<Grocery, GroceryRecylerAd
                         listener.onItemClick(getItem(position));
                     }
                 }
-            });
+            });*/
 
         }
     }

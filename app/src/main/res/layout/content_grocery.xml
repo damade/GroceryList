@@ -8,230 +8,235 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activity.GroceryActivity"
     tools:showIn="@layout/activity_grocery">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="4dp">
-        <LinearLayout
-            android:onClick="activateViews"
-            android:background="@drawable/border"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="16dp"
-            android:padding="4dp"
-            android:layout_gravity="center">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:src="@drawable/baseline_add_shopping_cart_black_36"
-                android:tint="@color/pluralsight_orange" />
-            <View
-                android:layout_width="2dp"
-                android:padding="2dp"
-                android:layout_height="match_parent"
-                android:background="@color/pluralsight_orange"/>
-            <TextView
-                android:padding="2dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/add_new_grocery"
-                android:textSize="@dimen/add_new_grocery"/>
-        </LinearLayout>
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_margin="4dp"
-            android:padding="4dp">
+            android:layout_margin="4dp">
             <LinearLayout
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="4dp"
-                android:padding="4dp">
-                <ImageView
-                android:id="@+id/itemImageView"
+                android:onClick="activateViews"
+                android:background="@drawable/border"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:tint="@color/pluralsight_orange"
-                app:srcCompat="@drawable/baseline_local_grocery_store_black_36"/>
-                <View
-                    android:layout_width="2dp"
-                    android:padding="2dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorBlackForMe"/>
-                <Spinner
-                    android:id="@+id/grocery_category"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:padding="2dp"
-                    android:spinnerMode="dropdown"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_margin="4dp"
-                android:padding="4dp">
+                android:layout_margin="16dp"
+                android:padding="4dp"
+                android:layout_gravity="center">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:tint="@color/pluralsight_orange"
-                    app:srcCompat="@drawable/baseline_local_grocery_store_black_36"/>
+                    android:src="@drawable/baseline_add_shopping_cart_black_36"
+                    android:tint="@color/pluralsight_orange" />
                 <View
                     android:layout_width="2dp"
                     android:padding="2dp"
                     android:layout_height="match_parent"
-                    android:background="@color/colorBlackForMe"/>
-                <EditText
-                    android:id="@+id/text_grocery_title"
+                    android:background="@color/pluralsight_orange"/>
+                <TextView
+                    android:padding="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_new_grocery"
+                    android:textSize="@dimen/add_new_grocery"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="4dp"
+                android:padding="4dp">
+                <LinearLayout
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:layout_margin="4dp"
-                    android:ems="10"
-                    android:hint="Grocery Name: Max. of 30 characters"
-                    android:inputType="text"
-                    android:maxLength="30"/>
+                    android:padding="4dp">
+                    <ImageView
+                        android:id="@+id/itemImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:tint="@color/pluralsight_orange"
+                        app:srcCompat="@drawable/baseline_local_grocery_store_black_36"/>
+                    <View
+                        android:layout_width="2dp"
+                        android:padding="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorBlackForMe"/>
+                    <Spinner
+                        android:id="@+id/grocery_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:padding="2dp"
+                        android:spinnerMode="dropdown"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="4dp"
+                    android:padding="4dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:tint="@color/pluralsight_orange"
+                        app:srcCompat="@drawable/baseline_local_grocery_store_black_36"/>
+                    <View
+                        android:layout_width="2dp"
+                        android:padding="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorBlackForMe"/>
+                    <EditText
+                        android:id="@+id/text_grocery_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:ems="10"
+                        android:hint="Grocery Name: Max. of 30 characters"
+                        android:inputType="text"
+                        android:maxLength="30"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="4dp"
+                    android:padding="4dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:tint="@color/pluralsight_orange"
+                        app:srcCompat="@drawable/naira_96"/>
+                    <View
+                        android:layout_width="2dp"
+                        android:padding="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorBlackForMe"/>
+                    <EditText
+                        android:id="@+id/text_grocery_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:ems="10"
+                        android:hint="PRICE"
+                        android:inputType="number"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/quantity"
+                    android:textAllCaps="true"
+                    android:textColor="#FF5722"
+                    android:textSize="24sp" />
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="4dp"
+                    android:padding="4dp">
+                    <Button
+                        android:id="@+id/button_minus"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="-"
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
+                    <EditText
+                        android:id="@+id/text_grocery_quantity"
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="QUANTITY"
+                        android:maxLength="4"
+                        android:inputType="number"/>
+                    <Button
+                        android:id="@+id/button_plus"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="+"
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
+                android:onClick="saveEachGrocery"
+                android:background="@drawable/border"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_margin="4dp"
-                android:padding="4dp">
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:layout_gravity="center">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:tint="@color/pluralsight_orange"
-                    app:srcCompat="@drawable/naira_96"/>
+                    android:src="@android:drawable/ic_menu_save"
+                    android:tint="@color/pluralsight_orange" />
                 <View
                     android:layout_width="2dp"
                     android:padding="2dp"
                     android:layout_height="match_parent"
-                    android:background="@color/colorBlackForMe"/>
-                <EditText
-                    android:id="@+id/text_grocery_price"
-                    android:layout_width="match_parent"
+                    android:background="@color/pluralsight_orange"/>
+                <TextView
+                    android:padding="2dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:ems="10"
-                    android:hint="PRICE"
-                    android:inputType="number"/>
+                    android:text="@string/save_grocery"
+                    android:textSize="@dimen/add_new_grocery"/>
             </LinearLayout>
-            <TextView
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="@string/quantity"
-                android:textAllCaps="true"
-                android:textColor="#FF5722"
-                android:textSize="24sp" />
             <LinearLayout
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
+                android:onClick="activateDataFormDialog"
+                android:background="@drawable/border"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_margin="4dp"
-                android:padding="4dp">
-                <Button
-                    android:id="@+id/button_minus"
-                    android:layout_width="0dp"
-                    android:layout_weight="3"
+                android:layout_margin="16dp"
+                android:padding="8dp"
+                android:layout_gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="-"
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
-                <EditText
-                    android:id="@+id/text_grocery_quantity"
-                    android:layout_width="0dp"
-                    android:layout_weight="4"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:ems="10"
-                    android:hint="QUANTITY"
-                    android:maxLength="4"
-                    android:inputType="number"/>
-                <Button
-                    android:id="@+id/button_plus"
-                    android:layout_width="0dp"
-                    android:layout_weight="3"
-                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_local_grocery_store_black_36"
+                    android:tint="@color/pluralsight_orange" />
+                <View
+                    android:layout_width="2dp"
                     android:padding="2dp"
-                    android:text="+"
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
+                    android:layout_height="match_parent"
+                    android:background="@color/pluralsight_orange"/>
+                <TextView
+                    android:padding="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/go_to_grocery_list"
+                    android:textSize="@dimen/add_new_grocery"/>
             </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:onClick="activateDataFormDialog"
-            android:background="@drawable/border"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="8dp"
-            android:padding="8dp"
-            android:layout_gravity="center">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:src="@android:drawable/ic_menu_save"
-                android:tint="@color/pluralsight_orange" />
-            <View
-                android:layout_width="2dp"
-                android:padding="2dp"
-                android:layout_height="match_parent"
-                android:background="@color/pluralsight_orange"/>
-            <TextView
-                android:padding="2dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/save_grocery"
-                android:textSize="@dimen/add_new_grocery"/>
-        </LinearLayout>
-        <LinearLayout
-            android:onClick="activateDataFormDialog"
-            android:background="@drawable/border"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="16dp"
-            android:padding="8dp"
-            android:layout_gravity="center">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:src="@drawable/baseline_local_grocery_store_black_36"
-                android:tint="@color/pluralsight_orange" />
-            <View
-                android:layout_width="2dp"
-                android:padding="2dp"
-                android:layout_height="match_parent"
-                android:background="@color/pluralsight_orange"/>
-            <TextView
-                android:padding="2dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/go_to_grocery_list"
-                android:textSize="@dimen/add_new_grocery"/>
-        </LinearLayout>
 
 
-    </LinearLayout>
+        </LinearLayout>
 
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,18 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.example.android.grocerylist.Activity.GroceryActivity"
-            android:label="@string/edit_activity_note"
-            android:parentActivityName="com.example.android.grocerylist.Activity.GroceryListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
-        <activity
-            android:name="com.example.android.grocerylist.Activity.GroceryListActivity"
-            android:label="@string/title_activity_main"
+            android:label="@string/app_name"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -31,6 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.android.grocerylist.Activity.GroceryListActivity"
+            android:parentActivityName="com.example.android.grocerylist.Activity.GroceryActivity"
+            android:label="@string/title_activity_main"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
