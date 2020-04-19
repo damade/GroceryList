@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Activity.GroceryActivity">
+
+    <item
+        android:id="@+id/action_save"
+        android:icon="@android:drawable/ic_menu_save"
+        android:orderInCategory="100"
+        android:title="@string/action_save"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/action_send_mail"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_menu_share"
+        android:title="@string/action_share"
+        app:showAsAction="ifRoom|withText" />
+
+</menu>
