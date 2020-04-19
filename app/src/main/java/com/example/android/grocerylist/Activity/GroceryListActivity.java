@@ -46,6 +46,7 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
     private TextView textNameNavBar;
     private TextView textEmailNavBar;
     private TextView textPhoneNumberNavBar;
+    private TextView textTotalAmount;
 
     @Override
     protected void onDestroy() {
@@ -64,6 +65,7 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
         profileName = findViewById(R.id.text_name);
         profileEmail = findViewById(R.id.text_email);
         profilePhoneNumber = findViewById(R.id.text_phone_number);
+        textTotalAmount = findViewById(R.id.total_amount);
 
         Intent intent = getIntent();
         profileName.setText(intent.getStringExtra(ORIGINAL_CONTACT_NAME));
@@ -87,10 +89,16 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
             }
         });
 
-//        Grocery currentGrocery;
-//        for(int i = 1; i <= currentGrocery) grocery in currentGrocery{
-//
-//        }
+        /*LiveData<List<Grocery>> allGroceries  = groceryViewModel.getAllGroceries();
+        int size = allGroceries.
+        int Count = 0;
+        for(int i = 0; i < size;i++){
+            Grocery grocery = allGroceries.get(i);
+            int amount = grocery.getGrocery_Price() * grocery.getGrocery_Quantity();
+            Count += amount;
+        }
+        textTotalAmount.setText(String.valueOf(Count));*/
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
