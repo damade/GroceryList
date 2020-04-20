@@ -47,7 +47,7 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
     private TextView textEmailNavBar;
     private TextView textPhoneNumberNavBar;
     private TextView textTotalAmount;
-    private int Count = 0;
+    private String totalPrice;
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -91,8 +91,8 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
 
         double amount = GroceryRecylerAdapter.Count;
         DecimalFormat formatter = new DecimalFormat("#,###.00");
-
-        textTotalAmount.setText(String.valueOf(formatter.format(amount)));
+        totalPrice = String.valueOf(formatter.format(amount));
+        textTotalAmount.setText(totalPrice);
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -149,7 +149,8 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
             groceryViewModel.deleteAllNotes();
             Toast.makeText(this, "All Notes Deleted", Toast.LENGTH_SHORT).show();
             return true;
-        } else if (id == R.id.action_settings) {
+        } else if (id == R.id.action_share) {
+            share();
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -195,9 +196,9 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
             onBackPressed();
         }
         else if (id == R.id.nav_share) {
-
+            share();
         } else if (id == R.id.nav_send) {
-
+            share();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -205,4 +206,17 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
         return true;
     }
 
+    private void share() {
+
+        String subject = "Grocery to  purchase: ";
+        String finalText = "You want to purchase " + GroceryRecylerAdapter.totalList + "\nwhich cost #" + totalPrice;
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        //intent.setType("*/*");
+        intent.setType("message/rfc2822");
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, finalText);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
 }

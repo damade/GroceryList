@@ -8,7 +8,7 @@
         android:title="@string/action_delete_all_notes"
         app:showAsAction="ifRoom|withText" />
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_share"
         android:icon="@drawable/ic_menu_share"
         android:orderInCategory="100"
         android:title="@string/action_share"

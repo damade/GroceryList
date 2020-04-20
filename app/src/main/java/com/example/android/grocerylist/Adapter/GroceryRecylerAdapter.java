@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 public class GroceryRecylerAdapter extends ListAdapter<Grocery, GroceryRecylerAdapter.ViewHolder> {
     private OnItemClickListener listener;
     public static int Count = 0;
+    public static String totalList = " ";
+
     public GroceryRecylerAdapter() {
         super(DIFF_CALLBACK);
     }
@@ -51,6 +53,7 @@ public class GroceryRecylerAdapter extends ListAdapter<Grocery, GroceryRecylerAd
         int groceryPrice = currentGrocery.getGrocery_Price();
         int amount = groceryQuantity * groceryPrice;
         Count += amount;
+        totalList += ("\n" + groceryQuantity + " " + groceryTitle + " at " + groceryPrice + " each ");
         holder.mTextTitle.setText(groceryTitle);
         holder.mGroceryPrice.setText(String.valueOf(groceryPrice));
         holder.mGroceryQuantity.setText(String.valueOf(groceryQuantity));
