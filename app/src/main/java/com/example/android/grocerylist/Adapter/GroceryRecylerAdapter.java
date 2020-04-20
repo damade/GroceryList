@@ -13,9 +13,10 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 public class GroceryRecylerAdapter extends ListAdapter<Grocery, GroceryRecylerAdapter.ViewHolder> {
     private OnItemClickListener listener;
-
+    public static int Count = 0;
     public GroceryRecylerAdapter() {
         super(DIFF_CALLBACK);
     }
@@ -48,6 +49,8 @@ public class GroceryRecylerAdapter extends ListAdapter<Grocery, GroceryRecylerAd
         String groceryTitle = currentGrocery.getGrocery_Title();
         int groceryQuantity = currentGrocery.getGrocery_Quantity();
         int groceryPrice = currentGrocery.getGrocery_Price();
+        int amount = groceryQuantity * groceryPrice;
+        Count += amount;
         holder.mTextTitle.setText(groceryTitle);
         holder.mGroceryPrice.setText(String.valueOf(groceryPrice));
         holder.mGroceryQuantity.setText(String.valueOf(groceryQuantity));

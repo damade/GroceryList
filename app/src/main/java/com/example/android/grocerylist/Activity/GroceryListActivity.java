@@ -14,6 +14,8 @@ import com.example.android.grocerylist.R;
 import com.example.android.grocerylist.ViewModel.GroceryViewModel;
 import com.google.android.material.navigation.NavigationView;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -32,10 +34,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class GroceryListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    public static final int ADD_NOTE_REQUEST = 1;
-    public static final int EDIT_NOTE_REQUEST = 2;
     private GroceryViewModel groceryViewModel;
-    //private List<Grocery> notesList = new ArrayList<>();
+    private List<Grocery> groceryList = new ArrayList<>();
     public static final String ORIGINAL_CONTACT_NAME = "com.example.android.notekeeper.ORIGINAL_CONTACT_NAME";
     public static final String ORIGINAL_CONTACT_EMAIL = "com.example.android.notekeeper.ORIGINAL_CONTACT_EMAIL";
     public static final String ORIGINAL_CONTACT_PHONENUMBER = "com.example.android.notekeeper.ORIGINAL_CONTACT_PHONENUMBER";
@@ -47,7 +47,7 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
     private TextView textEmailNavBar;
     private TextView textPhoneNumberNavBar;
     private TextView textTotalAmount;
-
+    private int Count = 0;
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -89,15 +89,10 @@ public class GroceryListActivity extends AppCompatActivity implements Navigation
             }
         });
 
-        /*LiveData<List<Grocery>> allGroceries  = groceryViewModel.getAllGroceries();
-        int size = allGroceries.
-        int Count = 0;
-        for(int i = 0; i < size;i++){
-            Grocery grocery = allGroceries.get(i);
-            int amount = grocery.getGrocery_Price() * grocery.getGrocery_Quantity();
-            Count += amount;
-        }
-        textTotalAmount.setText(String.valueOf(Count));*/
+        double amount = GroceryRecylerAdapter.Count;
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+
+        textTotalAmount.setText(String.valueOf(formatter.format(amount)));
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
